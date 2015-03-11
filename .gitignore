@@ -1,0 +1,8 @@
+# Webstorm
+.idea/
+
+npm-debug.log
+node_modules
+
+# test configuration (apiKey, apiUser)
+test/credentials.json
