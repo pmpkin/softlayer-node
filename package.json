@@ -1,8 +1,8 @@
 {
   "name": "softlayer-node",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Softlayer API Wrapper for node",
-  "main": "./lib/index.js",
+  "main": "./lib/softlayer.js",
   "scripts": {
     "test": "gulp test"
   },

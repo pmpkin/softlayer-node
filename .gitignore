@@ -6,3 +6,5 @@ node_modules
 
 # test configuration (apiKey, apiUser)
 test/credentials.json
+project.sublime-project
+project.sublime-workspace
