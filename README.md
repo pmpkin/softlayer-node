@@ -61,6 +61,13 @@ To use pagination, you can add offset and limit to the request.
 ```javascript
 client.resultLimit(offset, limit);
 ```
+##### headers()
+By default, the API client returns uses application/json. You can use this method to set different request headers.
+```javascript
+client.headers({
+    'Content-Type': 'application/json'
+});
+```
 ##### get()
 With get() the request is submitted. This method returns a Promise. If you prefer node callbacks, you can pass a callback to the method.
 ```javascript

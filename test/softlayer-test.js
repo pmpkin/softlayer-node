@@ -166,6 +166,7 @@ describe('SoftLayer API', function () {
 
         });
     });
+
     describe('get()', function() {
 
         it('should successfully return a masked Softlayer object, and reset the internal service object', function(done) {
@@ -202,6 +203,36 @@ describe('SoftLayer API', function () {
                     expect(err).to.equal(null);
                     expect(res).to.be.ok;
                     expect(res.id).to.equal(credentials.accountId);
+                    done();
+                });
+        });
+    });
+
+    describe('headers()', function() {
+
+        it('should successfully return a Softlayer object as xml', function (done) {
+
+            var result = null, error = null;
+
+            var client = new SoftLayer()
+                .path('Account')
+                .mask(['id'])
+                .auth(credentials.apiUser, credentials.apiKey)
+                .headers({
+                    'Accept': 'application/xml',
+                    'Content-Type': 'application/xml'
+                })
+                .get()
+                .then(function (res) {
+                    result = res;
+                }, function (err) {
+                    error = err;
+                })
+                .finally(function () {
+                    expect(error).to.equal(null);
+                    expect(result).to.be.ok;
+                    expect(result).to.contains('?xml');
+                    expect(client.service).to.not.be.ok;
                     done();
                 });
         });
