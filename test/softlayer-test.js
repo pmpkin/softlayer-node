@@ -2,6 +2,7 @@
  * Created by michael.wibmer on 11.03.2015.
  */
 var fs = require('fs');
+var Promise = require('bluebird');
 var path = require('path');
 var expect = require('chai').expect;
 var SoftLayer = require('../lib/softlayer');
@@ -177,23 +178,20 @@ describe('SoftLayer API', function () {
 
         it('should successfully return a masked Softlayer object, and reset the internal service object', function(done) {
 
-            var result = null, error = null;
-
             var client = new SoftLayer()
                 .path('Account')
                 .mask(['id'])
                 .auth(credentials.apiUser, credentials.apiKey)
                 .get()
                 .then(function(res) {
-                    result = res;
-                }, function(err) {
-                     error = err;
+                    expect(res).to.be.ok;
+                    expect(res.id).to.equal(credentials.accountId);
+                    expect(client.service).to.not.be.ok;
+                })
+                .catch(function(err) {
+                    expect(err).to.equal(null);
                 })
                 .finally(function() {
-                    expect(error).to.equal(null);
-                    expect(result).to.be.ok;
-                    expect(result.id).to.equal(credentials.accountId);
-                    expect(client.service).to.not.be.ok;
                     done();
                 });
         });
@@ -209,16 +207,17 @@ describe('SoftLayer API', function () {
                     expect(err).to.equal(null);
                     expect(res).to.be.ok;
                     expect(res.id).to.equal(credentials.accountId);
+
+                })
+                .finally(function() {
                     done();
-                });
+                })
         });
     });
 
     describe('headers()', function() {
 
         it('should successfully return a Softlayer object as xml', function (done) {
-
-            var result = null, error = null;
 
             var client = new SoftLayer()
                 .path('Account')
@@ -230,17 +229,17 @@ describe('SoftLayer API', function () {
                 })
                 .get()
                 .then(function (res) {
-                    result = res;
-                }, function (err) {
-                    error = err;
+                    expect(res).to.be.ok;
+                    expect(res).to.contains('?xml');
+                    expect(client.service).to.not.be.ok;
+                })
+                .catch(function (err) {
+                    expect(err).to.equal(null);
                 })
                 .finally(function () {
-                    expect(error).to.equal(null);
-                    expect(result).to.be.ok;
-                    expect(result).to.contains('?xml');
-                    expect(client.service).to.not.be.ok;
-                    done();
+                    done()
                 });
+
         });
     });
 
