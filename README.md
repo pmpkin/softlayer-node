@@ -56,6 +56,11 @@ Using this method you can add an object mask to the request. You can pass an arr
 ```javascript
 client.mask('maskElement1','maskElement2').mask(['maskElement3', 'maskElement4']);
 ```
+##### filter()
+Adds a filter object to the resulting api call. Expects a valid filter object. See [here](https://sldn.softlayer.com/de/node/274051) for the documentation on object filters.
+```javascript
+client.filter(jsonObject);
+```
 ##### resultLimit()
 To use pagination, you can add offset and limit to the request.
 ```javascript
