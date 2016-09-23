@@ -13,8 +13,6 @@ try {
     //no credentials
 }
 
-
-
 describe('HttpRequests', function () {
 
     //set higher default timeout due to networking

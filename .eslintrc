@@ -1,0 +1,20 @@
+{
+    "extends": "formidable/configurations/es5",
+    "env": {
+        "node": true
+    },
+    rules: {
+        "max-len": [0, 120, 4],
+        "quotes": ["error", "single"],
+        "indent": [0, "tab"],
+        "space-before-function-paren": 0,
+        strict: 0,
+        curly: 0,
+        "max-params": 0,
+        "valid-jsdoc": 0,
+        "max-statements": 0,
+        "consistent-return": 0,
+        "no-magic-numbers": 0,
+        "consistent-this": ["error", "_this"]
+    }
+}

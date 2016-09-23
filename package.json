@@ -4,7 +4,8 @@
   "description": "Softlayer API Wrapper for node",
   "main": "./lib/softlayer.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha ./test/**/*-test.js --reporter spec || exit 0"
+    "test": "./node_modules/.bin/mocha ./test/**/*-test.js --reporter spec || exit 0",
+    "eslint": "./node_modules/.bin/eslint . || exit 0"
   },
   "repository": {
     "type": "git",
@@ -21,10 +22,15 @@
   },
   "homepage": "https://github.com/pmpkin/softlayer-node",
   "dependencies": {
-    "bluebird": "^2.9.13"
+    "bluebird": "^2.9.13",
+    "request": "^2.75.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.5.0",
+    "eslint-config-formidable": "^1.0.1",
+    "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-import": "^1.16.0",
     "mocha": "^3.0.2"
   }
 }
