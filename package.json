@@ -4,7 +4,7 @@
   "description": "Softlayer API Wrapper for node",
   "main": "./lib/softlayer.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "./node_modules/.bin/mocha ./test/**/*-test.js --reporter spec"
   },
   "repository": {
     "type": "git",

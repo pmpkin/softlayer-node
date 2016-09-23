@@ -5,7 +5,13 @@ var fs = require('fs');
 var path = require('path');
 var expect = require('chai').expect;
 var SoftLayer = require('../lib/softlayer');
-var credentials = JSON.parse(fs.readFileSync(path.normalize(__dirname + '/credentials.json', 'utf8')));
+var credentials = { };
+
+try {
+    credentials = JSON.parse(fs.readFileSync(path.normalize(__dirname + '/credentials.json', 'utf8')));
+} catch (e) {
+    //no credentials
+}
 
 
 describe('SoftLayer API', function () {
