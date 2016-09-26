@@ -1,5 +1,7 @@
 # softlayer-node
 [Softlayer API](http://sldn.softlayer.com/reference/softlayerapi) wrapper for node. The module provides a simple fluent interface to construct API calls.
+[![Build Status](https://travis-ci.org/pmpkin/softlayer-node.svg)](https://travis-ci.org/pmpkin/softlayer-node)
+[![npm version](https://badge.fury.io/js/softlayer-node.svg)](https://badge.fury.io/js/softlayer-node)
 
 ## Installation
 The most simple way is to install the npm package:
