@@ -1,6 +1,9 @@
 # softlayer-node
 [Softlayer API](http://sldn.softlayer.com/reference/softlayerapi) wrapper for node. The module provides a simple fluent interface to construct API calls.
 
+[![Build Status](https://travis-ci.org/pmpkin/softlayer-node.svg)](https://travis-ci.org/pmpkin/softlayer-node)
+[![npm version](https://badge.fury.io/js/softlayer-node.svg)](https://badge.fury.io/js/softlayer-node)
+
 ## Installation
 The most simple way is to install the npm package:
 ```
@@ -50,7 +53,6 @@ This method sets the credentials
 ```javascript
 client.auth(apiUser, apiKey);
 ```
-
 ##### mask()
 Using this method you can add an object mask to the request. You can pass an array of mask elements, or simply string arguments to the method.
 ```javascript
@@ -73,8 +75,8 @@ client.headers({
     'Content-Type': 'application/json'
 });
 ```
-##### get()
-With get() the request is submitted. This method returns a Promise. If you prefer node callbacks, you can pass a callback to the method.
+##### get(), put(), post(), delete()
+Calling one of these methods, the request is submitted. This method returns a Promise. If you prefer node callbacks, you can pass a callback to the method.
 ```javascript
 //Using Promises:
 client.get()
@@ -85,11 +87,9 @@ client.get()
     });
 //Using node callback:
 client.get(function(err,res) {
-    
+
 });
 ```
-##### post(), put(), delete()
-These methods are not yet implemented.
 ##### Chaining it all together
 ```javascript
 var SoftLayer = require('softlayer-node');
@@ -107,19 +107,21 @@ client
 ```
 
 ## Tests
-To run the tests open a command line and tpye
+To run the tests open a command line and type
 ```
-npm test
+npm run test
 ```
-or
+## eslint
+To run eslint open a command line and type
 ```
-gulp test
+npm run eslint
 ```
-You will need to have gulp and mocha installed to run the tests. **Important:** The tests make real http requests (only GET) to an account, which has to be configured in a file called credentials.json in the test folder.
+
+You will need to have gulp and mocha installed to run the tests. **Important:** The tests make real http requests (currently only GET) to a SoftLayer account, which has to be configured in a file called credentials.json in the test folder.
 This file must have the following content:
 ``` json
 {
-  "accountId": "[account id]",
+  "accountId": "[accountId]",
   "apiUser": "[api user]",
   "apiKey": "[api key]"
 }
