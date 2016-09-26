@@ -1,17 +1,9 @@
 /**
  * Created by michael.wibmer on 11.03.2015.
  */
-var fs = require('fs');
-var path = require('path');
 var expect = require('chai').expect;
 var HttpRequests = require('../lib/http-requests');
-var credentials = { };
-
-try {
-    credentials = JSON.parse(fs.readFileSync(path.normalize(__dirname + '/credentials.json', 'utf8')));
-} catch (e) {
-    //no credentials
-}
+var credentials = require('./test-utils').loadCredentials();
 
 describe('HttpRequests', function () {
 
@@ -24,6 +16,7 @@ describe('HttpRequests', function () {
     });
 
     describe('get()', function() {
+
         it('should fail because of missing credentials', function(done) {
 
             HttpRequests.get(undefined, null, null, null, null, null, null, function(err) {
@@ -38,6 +31,7 @@ describe('HttpRequests', function () {
                 done();
             });
         });
+
         it('should fail with status 401 because of incorrect user credentials', function(done) {
             var path=['Account'];
 
@@ -49,6 +43,8 @@ describe('HttpRequests', function () {
 
             });
         });
+
+
         it('should fail with status 404 because of invalid path', function(done) {
             var path=['ThisIsInvalid'];
             HttpRequests.get(credentials, path, null, null, null, null, null, function(err) {
@@ -68,6 +64,7 @@ describe('HttpRequests', function () {
                 done();
             });
         });
+
         it('should fail with status 500 because of using pagination with invalid limit', function(done) {
             var path=['Account', 'Invoices'];
 
@@ -83,7 +80,6 @@ describe('HttpRequests', function () {
             var path=['Account'];
 
             HttpRequests.get(credentials, path, null, null, null, null, null, function(err, res) {
-
                 expect(err).to.equal(null);
                 expect(res).to.be.ok;
                 expect(res.id).to.equal(credentials.accountId);
@@ -132,7 +128,6 @@ describe('HttpRequests', function () {
                 done();
             });
         });
-
     });
 
 });

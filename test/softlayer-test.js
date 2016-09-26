@@ -1,19 +1,10 @@
 /**
  * Created by michael.wibmer on 11.03.2015.
  */
-var fs = require('fs');
 var Promise = require('bluebird');
-var path = require('path');
 var expect = require('chai').expect;
 var SoftLayer = require('../lib/softlayer');
-var credentials = { };
-
-try {
-    credentials = JSON.parse(fs.readFileSync(path.normalize(__dirname + '/credentials.json', 'utf8')));
-} catch (e) {
-    //no credentials
-}
-
+var credentials = require('./test-utils').loadCredentials();
 
 describe('SoftLayer API', function () {
     //set higher default timeout due to networking
