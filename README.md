@@ -1,4 +1,4 @@
-# softlayer-node
+# softlayer-client
 [Softlayer API](http://sldn.softlayer.com/reference/softlayerapi) wrapper for node. The module provides a simple fluent interface to construct API calls.
 
 [![Build Status](https://travis-ci.org/pmpkin/softlayer-node.svg)](https://travis-ci.org/pmpkin/softlayer-node)
