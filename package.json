@@ -15,7 +15,7 @@
     "softlayer",
     "api"
   ],
-  "author": "Tanmoy Thander <personal@tanmoythander.info> (http://tanmoythander.info)",
+  "author": "Tanmoy Thander <contact@tanmoythander.info> (https://tanmoythander.info)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tanmoythander/softlayer-client/issues"
@@ -31,6 +31,6 @@
     "eslint-config-formidable": "^1.0.1",
     "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-import": "^1.16.0",
-    "mocha": "^3.0.2"
+    "mocha": "^5.2.0"
   }
 }
