@@ -1,7 +1,7 @@
 {
-  "name": "softlayer-node",
-  "version": "0.2.1",
-  "description": "Softlayer API Wrapper for node",
+  "name": "softlayer-client",
+  "version": "1.0.1",
+  "description": "Softlayer API client for nodejs",
   "main": "./lib/softlayer.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha ./test/**/*-test.js --reporter spec || exit 0",
@@ -9,18 +9,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pmpkin/softlayer-node.git"
+    "url": "https://github.com/tanmoythander/softlayer-client"
   },
   "keywords": [
     "softlayer",
     "api"
   ],
-  "author": "Michael Wibmer <michael@pmpkin.com> (http://www.pmpkin.com/)",
+  "author": "Tanmoy Thander <contact@tanmoythander.info> (https://tanmoythander.info)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pmpkin/softlayer-node/issues"
+    "url": "https://github.com/tanmoythander/softlayer-client/issues"
   },
-  "homepage": "https://github.com/pmpkin/softlayer-node",
+  "homepage": "https://github.com/tanmoythander/softlayer-client",
   "dependencies": {
     "bluebird": "^2.9.13",
     "request": "^2.75.0"
@@ -31,6 +31,6 @@
     "eslint-config-formidable": "^1.0.1",
     "eslint-plugin-filenames": "^1.1.0",
     "eslint-plugin-import": "^1.16.0",
-    "mocha": "^3.0.2"
+    "mocha": "^5.2.0"
   }
 }

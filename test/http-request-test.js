@@ -1,6 +1,3 @@
-/**
- * Created by michael.wibmer on 11.03.2015.
- */
 var expect = require('chai').expect;
 var HttpRequests = require('../lib/http-requests');
 var credentials = require('./test-utils').loadCredentials();
