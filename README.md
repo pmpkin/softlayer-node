@@ -70,7 +70,7 @@ client.resultLimit(offset, limit);
 By default, the API client returns uses application/json. You can use this method to set different request headers.
 ```javascript
 client.headers({
-    'Content-Type': 'application/json'
+  'Content-Type': 'application/json'
 });
 ```
 ##### get(), put(), post(), delete()
@@ -78,11 +78,11 @@ Calling one of these methods, the request is submitted. This method returns a Pr
 ```javascript
 // Using Promises:
 client.get()
-    .then(function(result) {
-        // result contains the result of the request
-    }, function(error) {
-        // the Promise has been rejected.
-    });
+  .then(function(result) {
+    // result contains the result of the request
+  }, function(error) {
+    // the Promise has been rejected.
+  });
 // Using node callback:
 client.get(function(err,res) {
 

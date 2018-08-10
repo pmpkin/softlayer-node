@@ -1,6 +1,3 @@
-/**
- * Created by michael.wibmer on 11.03.2015.
- */
 var Promise = require('bluebird');
 var expect = require('chai').expect;
 var SoftLayer = require('../lib/softlayer');
