@@ -1,19 +1,17 @@
 # softlayer-client
 [Softlayer API](http://sldn.softlayer.com/reference/softlayerapi) wrapper for node. The module provides a simple fluent interface to construct API calls.
 
-[![Build Status](https://travis-ci.org/pmpkin/softlayer-node.svg)](https://travis-ci.org/pmpkin/softlayer-node)
-[![npm version](https://badge.fury.io/js/softlayer-node.svg)](https://badge.fury.io/js/softlayer-node)
 
 ## Installation
 The most simple way is to install the npm package:
 ```
-npm install softlayer-node --save
+npm install softlayer-client --save
 ```
 
 ## Usage
 First, require the module and create an instance of the client:
 ```javascript
-var SoftLayer = require('softlayer-node');
+var SoftLayer = require('softlayer-client');
 var client = new SoftLayer();
 ```
 Every request to the SoftLayer REST API must be authenticated. Internally the wrapper uses basic authentication using the API User and API key. You find these values on the Softlayer portal. To provide credentials to the wrapper, you have two options
@@ -46,7 +44,7 @@ will create the following request:
 ```
 /rest/v3/SoftLayer_Billing_Invoice/12345
 ```
-As you can see, the method name starts with a lower case and the underscores are removed. In the resulting URL, the correct SoftLayer service name is concstructed. See [here](http://sldn.softlayer.com/reference/services/) for a complete list of available services.
+As you can see, the method name starts with a lower case and the underscores are removed. In the resulting URL, the correct SoftLayer service name is concstructed. See [here](https://softlayer.github.io/reference/softlayerapi/) for a complete list of available services.
 
 ##### auth()
 This method sets the credentials
@@ -54,17 +52,17 @@ This method sets the credentials
 client.auth(apiUser, apiKey);
 ```
 ##### mask()
-Using this method you can add an object mask to the request. You can pass an array of mask elements, or simply string arguments to the method.
+Using this method you can add an object mask to the request. You can pass an array of mask elements, or simply string arguments to the method. See [here](https://softlayer.github.io/article/rest/#Using_Object_Masks) for reference.
 ```javascript
 client.mask('maskElement1','maskElement2').mask(['maskElement3', 'maskElement4']);
 ```
 ##### filter()
-Adds a filter object to the resulting api call. Expects a valid filter object. See [here](https://sldn.softlayer.com/de/node/274051) for the documentation on object filters.
+Adds a filter object to the resulting api call. Expects a valid filter object.
 ```javascript
 client.filter(jsonObject);
 ```
 ##### resultLimit()
-To use pagination, you can add offset and limit to the request.
+To use pagination, you can add offset and limit to the request. See [here](https://softlayer.github.io/article/rest/#Using_Result_Limits) for reference.
 ```javascript
 client.resultLimit(offset, limit);
 ```
@@ -78,23 +76,37 @@ client.headers({
 ##### get(), put(), post(), delete()
 Calling one of these methods, the request is submitted. This method returns a Promise. If you prefer node callbacks, you can pass a callback to the method.
 ```javascript
-//Using Promises:
+// Using Promises:
 client.get()
     .then(function(result) {
-        //result contains the result of the request
-    }),function(reason) {
-        //the Promise has been rejected. reason contains the error.
+        // result contains the result of the request
+    }, function(error) {
+        // the Promise has been rejected.
     });
-//Using node callback:
+// Using node callback:
 client.get(function(err,res) {
 
 });
+```
+##### parameters()
+Adds a parameter object or an array of objects to the resulting api call. Expects a valid parameter object. Only applicable to put(), post() and delete() methods. Use this method before put(), post() or delete() method. See [here](https://softlayer.github.io/article/rest/#Passing_Method_Parameters) for reference.
+```javascript
+client.parameters(jsonObject);
+// or
+client.parameters([jsonObject1, jsonObject2]);
+```
+##### reset()
+This method resets the API client.
+Use this method when you want to reuse a previously used client object.
+```javascript
+client.reset();
 ```
 ##### Chaining it all together
 ```javascript
 var SoftLayer = require('softlayer-node');
 var client = new SoftLayer();
 client
+  .reset() // only if you want to reuse a client object
   .auth('youruser', 'yourkey')
   .path('Hardware_Server', 1234, 'NetworkComponents', '5678')
   .mask('datacenter','operatingSystem.passwords')
