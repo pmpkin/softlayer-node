@@ -1,6 +1,6 @@
 {
   "name": "softlayer-node",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Softlayer API Wrapper for node",
   "main": "./lib/softlayer.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "softlayer",
     "api"
   ],
-  "author": "Michael Wibmer <michael@pmpkin.com> (http://www.pmpkin.com/)",
+  "author": "Michael Wibmer <michael@pmpkin.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/pmpkin/softlayer-node/issues"
