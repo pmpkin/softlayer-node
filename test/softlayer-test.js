@@ -24,6 +24,22 @@ describe('SoftLayer API', function () {
         done();
     });
 
+    it('should instantiate with credentials set via node environment variables, including api url v3.1', function(done) {
+
+        process.env.SOFTLAYER_API_USER = "apiuser";
+        process.env.SOFTLAYER_API_KEY = "apikey";
+        process.env.SOFTLAYER_API_KEY = SoftLayer.API_URL_V3_1;
+
+        var client = new SoftLayer();
+
+        expect(client.credentials).to.exist;
+        expect(client.credentials.apiKey).to.exist;
+        expect(client.credentials.apiUser).to.exist;
+        expect(client.credentials.apiUrl).to.equal(SoftLayer.API_URL_V3_1);
+
+        done();
+    });
+
     describe('path()', function() {
 
         it('should add a path element to the prepared api object', function(done) {
@@ -92,6 +108,21 @@ describe('SoftLayer API', function () {
             expect(client.credentials).to.exist;
             expect(client.credentials.apiUser).to.equal('user');
             expect(client.credentials.apiKey).to.equal('key');
+
+            done();
+        });
+        it('should set apiKey, apiUser and apiUrl', function(done) {
+
+            process.env.SOFTLAYER_API_USER = "apiuser";
+            process.env.SOFTLAYER_API_KEY = "apikey";
+            process.env.SOFTLAYER_API_URL = "apiUrl";
+
+            var client = new SoftLayer();
+            client.auth('user', 'key', 'anotherApiUrl');
+            expect(client.credentials).to.exist;
+            expect(client.credentials.apiUser).to.equal('user');
+            expect(client.credentials.apiKey).to.equal('key');
+            expect(client.credentials.apiUrl).to.equal('anotherApiUrl');
 
             done();
         });

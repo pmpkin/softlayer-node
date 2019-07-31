@@ -13,7 +13,8 @@ exports.loadCredentials = function() {
         credentials = {
             accountId:  process.env.SOFTLAYER_API_ACCOUNT,
             apiUser:  process.env.SOFTLAYER_API_USER,
-            apiKey:  process.env.SOFTLAYER_API_USER
+            apiKey:  process.env.SOFTLAYER_API_USER,
+            apiUrl:  process.env.SOFTLAYER_API_URL
         }
     }
     return credentials || {};

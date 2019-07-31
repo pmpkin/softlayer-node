@@ -26,7 +26,7 @@ describe('HttpRequests', function () {
         });
         it('should fail because of missing path', function(done) {
 
-            HttpRequests.get({apiUser: 'user', apiKey: 'key'}, null, null,null,null, null, null, function(err) {
+            HttpRequests.get({apiUser: 'user', apiKey: 'key', apiUrl: 'url'}, null, null,null,null, null, null, function(err) {
                 expect(err).to.be.ok;
                 done();
             });
